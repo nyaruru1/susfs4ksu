@@ -12,7 +12,7 @@ jobs:
         fetch-depth: 0
     - uses: nttld/setup-ndk@v1
       with:
-        ndk-version: r26d
+        ndk-version: r27
     - name: Build susfs jni
       working-directory: ./userspace/susfs
       run: ndk-build

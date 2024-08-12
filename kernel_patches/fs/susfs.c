@@ -443,7 +443,7 @@ int susfs_set_uname(struct st_susfs_uname* __user user_info) {
 	return 0;
 }
 
-#if LINUX_VERSION_CODE < KERNEL_VERSION(4,19,0)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(4,14,0)
 int susfs_sus_path_by_path(struct path* file, int* errno_to_be_changed, int syscall_family)
 #else
 int susfs_sus_path_by_path(const struct path* file, int* errno_to_be_changed, int syscall_family)
@@ -667,7 +667,7 @@ void susfs_add_mnt_id_recorder(struct mnt_namespace *ns) {
 		}
 		// if no match from above, use the original parent mnt_id
 		if (new_recorder_list->info.spoofed_parent_mnt_id[count] == 0) {
-			new_recorder_list->info.spoofed_parent_mnt_id[count] == mnt_cursor->mnt_parent->mnt_id;
+			new_recorder_list->info.spoofed_parent_mnt_id[count] = mnt_cursor->mnt_parent->mnt_id;
 		}
 		new_recorder_list->info.count = ++count;
 out_continue:
